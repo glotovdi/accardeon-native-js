@@ -1,0 +1,24 @@
+{
+  "name": "accardeon",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "test",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Glotov",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "browser-sync": "^2.18.11",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
+    "node-normalize-scss": "^3.0.0",
+    "normalize-scss": "^6.0.0",
+    "sass-module-importer": "^1.4.0"
+  }
+}
