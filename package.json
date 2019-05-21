@@ -4,7 +4,7 @@
   "description": "test",
   "main": "test",
   "scripts": {
-    "test": "test"
+    "gulp": "gulp"
   },
   "keywords": [
     "test"
@@ -15,6 +15,7 @@
     "browser-sync": "^2.18.11",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.8",
     "node-normalize-scss": "^3.0.0",
