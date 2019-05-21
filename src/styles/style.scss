@@ -7,15 +7,14 @@ html {
   height: 100%;
 }
 .block {
-  width: 481px;
-  border-radius: 6px;
+  width: 480px;
+  border-radius: 5px;
   overflow: hidden;
   margin-bottom: 5px;
   background-color: #e7e7e7;
   height: 41px;
 }
 .title {
-  width: 100%;
   border-radius: 5px;
   padding-left: 23px;
   box-sizing: border-box;
@@ -24,23 +23,33 @@ html {
   background-color: #696666;
   line-height: 41px;
   cursor: pointer;
+  position: relative;
 }
-.block:nth-child(2n) {
-  .title {
-    color: black;
-    background-color: #e7e7e7;
-  }
+.block:nth-child(2n) .title {
+  color: black;
+  background-color: #e7e7e7;
 }
 .active-block {
   height: min-content;
 }
-.block.active-block {
-  .title {
-    color: white;
-    background: #ff8663;
-  }
+.block.active-block .title {
+  color: white;
+  background: #ff8663;
 }
 
 .text {
   margin: 16px 23px;
+}
+
+.arrow {
+  border: 8px solid transparent;
+  border-top: 8px solid #ff8663;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+}
+.active-block .arrow {
+  border: 8px solid transparent;
+  border-bottom: 8px solid white;
+  top: 10px;
 }
