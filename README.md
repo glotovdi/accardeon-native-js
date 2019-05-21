@@ -1,4 +1,4 @@
 # accardeon-native-js
 
-npm i
-npm run-script gulp
+`npm i`
+`npm run-script gulp`
