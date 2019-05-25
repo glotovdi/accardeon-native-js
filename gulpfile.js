@@ -10,48 +10,61 @@ var paths = {
   script: ['src/scripts/*.js']
 };
 
-gulp.task('mincss', function() {
-  return gulp
-    .src(paths.css)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(minifyCss())
-    .pipe(gulp.dest('dist'))
-    .pipe(reload({ stream: true }));
-});
+gulp.task(
+  'mincss',
+  gulp.series(function() {
+    return gulp
+      .src(paths.css)
+      .pipe(sass().on('error', sass.logError))
+      .pipe(minifyCss())
+      .pipe(gulp.dest('dist'))
+      .pipe(reload({ stream: true }));
+  })
+);
 
-gulp.task('html', function() {
-  gulp
-    .src(paths.html)
-    .pipe(gulp.dest('dist'))
-    .pipe(reload({ stream: true }));
-});
+gulp.task(
+  'html',
+  gulp.series(function() {
+    return gulp
+      .src(paths.html)
+      .pipe(gulp.dest('dist'))
+      .pipe(reload({ stream: true }));
+  })
+);
 
-gulp.task('browserSync', function() {
-  browserSync({
-    server: {
-      baseDir: './dist'
-    },
-    port: 8080,
-    open: true,
-    notify: false
-  });
-});
+gulp.task(
+  'browserSync',
+  gulp.series(function() {
+    browserSync({
+      server: {
+        baseDir: './dist'
+      },
+      port: 8080,
+      open: true,
+      notify: false
+    });
+  })
+);
 
-gulp.task('scripts', function() {
-  return gulp
-    .src(paths.script)
-    .pipe(gulp.dest('dist'))
-    .pipe(reload({ stream: true }));
-});
+gulp.task(
+  'scripts',
+  gulp.series(function() {
+    return gulp
+      .src(paths.script)
+      .pipe(gulp.dest('dist'))
+      .pipe(reload({ stream: true }));
+  })
+);
 
-gulp.task('watcher', function() {
-  gulp.watch(paths.css, ['mincss']);
-  gulp.watch(paths.script, ['scripts']);
-  gulp.watch(paths.html, ['html']);
-});
+gulp.task(
+  'watcher',
+  gulp.series(function() {
+    gulp.watch(paths.css, gulp.series(['mincss']));
+    gulp.watch(paths.script, gulp.series(['scripts']));
+    gulp.watch(paths.html, gulp.series(['html']));
+  })
+);
 
-gulp.task('prepare', function() {
-  gulp.start('mincss'), gulp.start('scripts'), gulp.start('html');
-});
+gulp.task('prepare', gulp.parallel('mincss', 'scripts', 'html'));
 
-gulp.task('default', ['prepare', 'watcher', 'browserSync']);
+gulp.task('default', gulp.series(['prepare', 'watcher', 'browserSync']));
